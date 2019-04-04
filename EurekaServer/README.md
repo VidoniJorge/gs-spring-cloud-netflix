@@ -8,7 +8,13 @@
 Group: org.springframework.cloud; artifact:spring-cloud-starter-netflix-eureka-server
 
 #### Procedimiento
-1. Lo primero que tenemos que hacer es configurar la dependencia en nuestro proyecto. Esto lo realizamos agregando en nuestro.
+Para crear un Server Euraka basico solo necestiamos completar 3 pasos:
+* Configurar dependencias de librerías
+* Configurar las propiedades del server (Se puede omitir este paso y dejar que el server tome los valores por defecto)
+* Configurar la clase que inicializará el Server
+
+##### Agregar Dependencias
+Para configurar las dependencia en nuestro proyecto solo tenemos que agregar en nuestro archivo gradle o maven, las siguientes las dependencias especificadas anteriormente.
 
    Gradle
 
@@ -16,13 +22,39 @@ Group: org.springframework.cloud; artifact:spring-cloud-starter-netflix-eureka-s
    >
    > 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
    >
-   > 	testImplementation 'org.springframework.boot:spring-boot-starter-test' 
-   >
    > }
 
    Maven
 
-2. Una ves configuradas las dependencias, tenemos que crear nuestra clase que iniciara el Server Eureka. La forma más simple de hacer esto es agregando la anotación @EnableEurekaServer en la clase applicacion.
+##### Configurar Server
+Esta configuración se tiene que realizar en nuestro archivo application.properties o application.yml.
+
+Las propiedades básicas que son conveniente configurar son
+
+_Configuramos el puerto del server de eureka_
+> server.port = 8761
+
+_Configurar nuestro host name_
+> eureka.instance.hostname = localhost
+
+No es necesario configurar el hostname si se está ejecutando el server en una máquina que conoce su propio nombre de host (de forma predeterminada, se busca mediante java.net.InetAddress).
+
+_Configuramos el cliente del server_
+
+El Server de Eureka también es un cliente (Esto es para configurar el server en cluster), por tal motivo cuando se inicia lo lo primero que hace es intentar conectarse un server. Al no existir ninguno nos llenara nuestro log de errores. Para desavilitar solo tenemos que poner en false las siguientes propiedades
+
+> eureka.client.registerWithEureka = false
+
+Si hacemos que esta propiedad sea verdadera, entonces mientras el servidor inicia, el cliente incorporado intentará registrarse con el servidor Eureka.
+
+> eureka.client.fetchRegistry = false
+
+El cliente incorporado intentará obtener el registro de Eureka si configuramos esta propiedad como verdadera.
+
+##### Inicializar Server
+Una ves configuradas las dependencias y configurado las propiedades de nuestro server, solo resta crear nuestra clase que iniciara el Server Eureka. La forma más simple de hacer esto es agregando la anotación @EnableEurekaServer en la clase SpringBootApplication.
+
+Ejemplo:
 
 >package com.curso.spring.eurekaserver;
 > 
@@ -36,7 +68,7 @@ Group: org.springframework.cloud; artifact:spring-cloud-starter-netflix-eureka-s
 >
 >@SpringBootApplication
 >
->public class EurekaServerApplication {
+>  public class EurekaServerApplication {
 >
 >  public static void main(String[] args) {
 >
@@ -45,24 +77,3 @@ Group: org.springframework.cloud; artifact:spring-cloud-starter-netflix-eureka-s
 >	}
 >
 >}
-
-3. La ultima parte es configurar las propiedades de nuestro server en nuestro archivo application.properties o application.yml
-eureka:  
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8760/eureka/,http://localhost:8761/eureka/
-
-server:
-  port: 8761
-spring:
-  profiles: peer2
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://localhost:8760/eureka/
-
-

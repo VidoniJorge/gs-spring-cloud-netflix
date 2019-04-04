@@ -5,10 +5,10 @@
 ### Crear un Server Eureka básico
 
 #### Dependencias necesarias
-Group: org.springframework.cloud; artifact:spring-cloud-starter-netflix-eureka-server
+     Group: org.springframework.cloud; artifact:spring-cloud-starter-netflix-eureka-server
 
 #### Procedimiento
-Para crear un Server Euraka basico solo necestiamos completar 3 pasos:
+Para crear un Server Euraka básico solo necesitamos completar 3 pasos:
 * Configurar dependencias de librerías
 * Configurar las propiedades del server (Se puede omitir este paso y dejar que el server tome los valores por defecto)
 * Configurar la clase que inicializará el Server
@@ -19,20 +19,17 @@ Para configurar las dependencia en nuestro proyecto solo tenemos que agregar en 
    Gradle
 
    >     dependencies {
-   >
    >          implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
-   >
    >     }
 
    Maven
    
-   >     <dependencies><dependency>
-   >
-   >          <groupId>org.springframework.cloud</groupId>
-   >
-   >          <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-   >
-   >     </dependency></dependencies>
+   >     <dependencies>
+   >          <dependency>
+   >               <groupId>org.springframework.cloud</groupId>
+   >               <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+   >          </dependency>
+   >     </dependencies>
  
 
 ##### Configurar Server
@@ -68,21 +65,15 @@ Ejemplo:
 >     package com.curso.spring.eurekaserver;
 > 
 >     import org.springframework.boot.SpringApplication;
->
 >     import org.springframework.boot.autoconfigure.SpringBootApplication;
->
 >     import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
->
+>     
 >     @EnableEurekaServer
->
 >     @SpringBootApplication
->
 >     public class EurekaServerApplication {
 >
 >          public static void main(String[] args) {
->
 >               SpringApplication.run(EurekaServerApplication.class, args);
->
 >          }
 >
 >     }

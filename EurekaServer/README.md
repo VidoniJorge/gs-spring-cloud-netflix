@@ -25,6 +25,14 @@ Para configurar las dependencia en nuestro proyecto solo tenemos que agregar en 
    > }
 
    Maven
+   
+   > <dependencies>
+   >	<dependency>
+   >		<groupId>org.springframework.cloud</groupId>
+   >		<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+   >	</dependency>
+   > </dependencies>
+ 
 
 ##### Configurar Server
 Esta configuración se tiene que realizar en nuestro archivo application.properties o application.yml.

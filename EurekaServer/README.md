@@ -18,20 +18,21 @@ Para configurar las dependencia en nuestro proyecto solo tenemos que agregar en 
 
    Gradle
 
-   > dependencies {
+   >     dependencies {
    >
-   > 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+   >          implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
    >
-   > }
+   >     }
 
    Maven
    
-   > <dependencies>
-   >	<dependency>
-   >		<groupId>org.springframework.cloud</groupId>
-   >		<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-   >	</dependency>
-   > </dependencies>
+   >     <dependencies><dependency>
+   >
+   >          <groupId>org.springframework.cloud</groupId>
+   >
+   >          <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+   >
+   >     </dependency></dependencies>
  
 
 ##### Configurar Server
@@ -64,24 +65,24 @@ Una ves configuradas las dependencias y configurado las propiedades de nuestro s
 
 Ejemplo:
 
->package com.curso.spring.eurekaserver;
+>     package com.curso.spring.eurekaserver;
 > 
->import org.springframework.boot.SpringApplication;
+>     import org.springframework.boot.SpringApplication;
 >
->import org.springframework.boot.autoconfigure.SpringBootApplication;
+>     import org.springframework.boot.autoconfigure.SpringBootApplication;
 >
->import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+>     import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 >
->@EnableEurekaServer
+>     @EnableEurekaServer
 >
->@SpringBootApplication
+>     @SpringBootApplication
 >
->  public class EurekaServerApplication {
+>     public class EurekaServerApplication {
 >
->  public static void main(String[] args) {
+>          public static void main(String[] args) {
 >
->    SpringApplication.run(EurekaServerApplication.class, args);
+>               SpringApplication.run(EurekaServerApplication.class, args);
 >
->	}
+>          }
 >
->}
+>     }

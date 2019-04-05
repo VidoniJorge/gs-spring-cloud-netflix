@@ -50,11 +50,11 @@ _Configuramos el puerto del Cliente de eureka_
 > server.port = 8090
 
 _Configurar el nombre de nuestro cliente_
-spring.application.name = <Nombre de nuestro cliente>
-Ests nombre es con el que se registrara el cliente en el server Eureka
+> spring.application.name = <Nombre de nuestro cliente>
+Este nombre es con el que se registrara el cliente en el server Eureka
 
-_indica_
-eureka.client.serviceUrl.defaultZone = http://localhost:8761/eureka/
+_Server Eureka_
+> eureka.client.serviceUrl.defaultZone = http://localhost:8761/eureka/
 
 indicamos la url de nuestro server Eureka
 

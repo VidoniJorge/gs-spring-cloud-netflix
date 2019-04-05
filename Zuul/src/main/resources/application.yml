@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+zuul:
+  routes:
+    producto-back-zuul:
+      url: http://localhost:8092
+
+#ribbon:
+ # eureka:
+  #  enabled: false
+
+

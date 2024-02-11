@@ -25,7 +25,7 @@ Es la implementación del patrón de Circuit Breaker creada por Netfix.
 ## Ribbon
 
 Ribbon es un equilibrador de carga del lado del cliente que le da mucho control sobre el comportamiento de los clientes HTTP y TCP.
-
+ 
 ## Zuul
 
 Zuul es un enrutador basado en JVM y un equilibrador de carga del lado del servidor de Netflix.
